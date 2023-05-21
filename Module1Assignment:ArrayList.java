@@ -41,6 +41,37 @@ public class ArrayList<T> {
      */
     public void addToFront(T data) {
         // WRITE YOUR CODE HERE (DO NOT MODIFY METHOD HEADER)!
+        
+        //Data Validity Check 
+        if (data == null) throw new InsertExceptionHere("Error: input data is null");
+        
+        //Check if empty
+        if (size == 0) {
+            backingArray[0] = data
+            size++;
+            return
+        }
+
+        // Increment size so we can se if resizing is necessary 
+        size++;
+        //If unessesary then we shift all elements to the right  
+        //By looping through 
+        if (size != INITIAL_CAPACITY){
+                temp = backingArray[0];
+            for (int i = 0; i < size; i ++) {
+                temp = backingArray[i+1];
+
+                backingArray[i+1] = backingArray[i];
+
+            }
+        }
+
+        //Resizing is necessary 
+        else {
+
+        }
+
+
     }
 
     /**
@@ -53,6 +84,30 @@ public class ArrayList<T> {
      */
     public void addToBack(T data) {
         // WRITE YOUR CODE HERE (DO NOT MODIFY METHOD HEADER)!
+
+        //Data Validity Check 
+        if (data == null) throw new InsertExceptionHere("Error: input data is null");
+        
+        //Check if empty
+        if (size == 0) {
+            backingArray[0] = data
+            size++;
+            return
+        }
+
+        // Increment size so we can se if resizing is necessary 
+        size++;
+        //If unessesary then we place new element at the end of the array, after incrementation is size - 1;   
+        if (size != INITIAL_CAPACITY){
+            backingArray[size-1] = data; 
+        }
+
+        //Resizing is necessary 
+        //How can we keep track of how many times we have resized? If i cant add any instance variables 
+        else {
+        newBackingArray = (T[]) new Object[2*INITIAL_CAPACITY];  
+        }
+
     }
 
     /**
@@ -69,6 +124,31 @@ public class ArrayList<T> {
      */
     public T removeFromFront() {
         // WRITE YOUR CODE HERE (DO NOT MODIFY METHOD HEADER)!
+        
+        //Check if empty
+        if (size == 0) {
+        throw new InsertExceptionHere("Error: list is empty");
+        }
+
+        //Check if size is 1 
+        else if (size == 1) {
+        int temp = backingArray[0];
+        backingArray[0] = null;
+        size--;
+        return temp;
+        }
+
+        else  { 
+            int temp = backingArray[0];
+        for (int i = 0; i < size-1; i++) {
+            backingArray[i] = backingArray[i+1];
+         
+         }
+         backingArray[size-1] = null;
+         return temp; 
+        }
+
+
     }
 
     /**
@@ -83,6 +163,18 @@ public class ArrayList<T> {
      */
     public T removeFromBack() {
         // WRITE YOUR CODE HERE (DO NOT MODIFY METHOD HEADER)!
+
+        //Check if empty
+        if (size == 0) {
+        throw new InsertExceptionHere("Error: list is empty");
+        }
+
+        else{ 
+        int temp = backingArray[size-1];
+        backingArray[size-1] = null;
+        size--;
+        return temp;
+        }
     }
 
     /**
