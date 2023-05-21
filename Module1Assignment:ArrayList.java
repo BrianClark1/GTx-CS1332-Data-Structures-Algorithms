@@ -156,14 +156,14 @@ public class ArrayList<T> {
 
         //Check if size is 1 
         else if (size == 1) {
-        int temp = backingArray[0];
+        T temp = backingArray[0];
         backingArray[0] = null;
         size--;
         return temp;
         }
 
         else  { 
-            int temp = backingArray[0];
+            T temp = backingArray[0];
         for (int i = 0; i < size-1; i++) {
             backingArray[i] = backingArray[i+1];
          
@@ -194,7 +194,7 @@ public class ArrayList<T> {
         }
 
         else{ 
-        int temp = backingArray[size-1];
+        T temp = backingArray[size-1];
         backingArray[size-1] = null;
         size--;
         return temp;
