@@ -44,13 +44,13 @@ public class ArrayList<T> {
         // WRITE YOUR CODE HERE (DO NOT MODIFY METHOD HEADER)!
         
         //Data Validity Check 
-        if (data == null) throw new InsertExceptionHere("Error: input data is null");
+        if (data == null) throw new NoSuchElementException("Error: input data is null");
         
         //Check if empty
         if (size == 0) {
-            backingArray[0] = data
+            backingArray[0] = data;
             size++;
-            return
+            return;
         }
 
         // Increment size so we can se if resizing is necessary 
@@ -59,26 +59,29 @@ public class ArrayList<T> {
         //By looping through 
         if (size != INITIAL_CAPACITY){
             for (int i = size; i >= 1; i--) {
-                backingArray[i] = backingArray[i-1]
+                backingArray[i] = backingArray[i-1];
             }
             backingArray[0] = data;
         }
 
         //Resizing is necessary 
         //How can we keep track of how many times we have resized? If i cant add any instance variables 
+      
         else {
         // sizeIterator++
 
         //Double the inital length of old array
-        newBackingArray = (T[]) new Object[2*INITIAL_CAPACITY];  
+        T[] newBackingArray = (T[]) new Object[2*INITIAL_CAPACITY];  
         
         //Copy all values from old array into new 
         for (int i = 0; i < size; i ++) { 
             newBackingArray[i] = backingArray[i];
           }
-        }
+        
         //Reassign backingArray to the doubled capacity array
         backingArray = newBackingArray;
+        
+        }
     }
     
 
@@ -94,13 +97,13 @@ public class ArrayList<T> {
         // WRITE YOUR CODE HERE (DO NOT MODIFY METHOD HEADER)!
 
         //Data Validity Check 
-        if (data == null) throw new InsertExceptionHere("Error: input data is null");
+        if (data == null) throw new NoSuchElementException("Error: input data is null");
         
         //Check if empty
         if (size == 0) {
-            backingArray[0] = data
+            backingArray[0] = data;
             size++;
-            return
+            return;
         }
 
         // Increment size so we can se if resizing is necessary 
@@ -116,17 +119,18 @@ public class ArrayList<T> {
         // sizeIterator++
 
         //Double the inital length of old array
-        newBackingArray = (T[]) new Object[2*INITIAL_CAPACITY];  
+         T[] newBackingArray = (T[]) new Object[2*INITIAL_CAPACITY];  
         
         //Copy all values from old array into new 
         for (int i = 0; i < size; i ++) { 
             newBackingArray[i] = backingArray[i];
 
           }
-        }
-
         //Reassign backingArray to the doubled capacity array
         backingArray = newBackingArray;
+        }
+
+
 
     }
 
@@ -147,7 +151,7 @@ public class ArrayList<T> {
         
         //Check if empty
         if (size == 0) {
-        throw new InsertExceptionHere("Error: list is empty");
+        throw new NoSuchElementException("Error: list is empty");
         }
 
         //Check if size is 1 
@@ -186,7 +190,7 @@ public class ArrayList<T> {
 
         //Check if empty
         if (size == 0) {
-        throw new InsertExceptionHere("Error: list is empty");
+        throw new NoSuchElementException("Error: list is empty");
         }
 
         else{ 
