@@ -227,3 +227,44 @@ public class ArrayList<T> {
         return size;
     }
 }
+
+// [Executed at: Sun May 21 13:17:39 PDT 2023]
+
+// ============================================================
+// ArrayList.java successfully compiled.
+// ============================================================
+// Tests Passed: 14 / 23
+
+// [Test Failure: addToFront] [-0.43] : IllegalArgumentException not thrown when attempting to add null data to the front. 
+
+// [Test Failure: addToFront] [-0.43] : Unexpected content after adding once to the front, to capacity.
+// 	Expected : [0a, 1a, 2a, 3a, 4a, 5a, 6a, 7a, 8a]
+// 	Actual : [1a, 2a, 3a, 4a, 5a, 6a, 7a, 8a, null, null, null, null, null, null, null, null, null, null] 
+
+// [Test Failure: addToFront] [-0.43] : This addToFront test was inconclusive due to: java.lang.ArrayIndexOutOfBoundsException: Index 9 out of bounds for length 9
+// Here is the stack trace to help identify the error in your code:
+// 	at ArrayList.addToFront, line number: 62 
+
+// [Test Failure: addToFront] [-0.43] : This addToFront test was inconclusive due to: java.lang.ArrayIndexOutOfBoundsException: Index 18 out of bounds for length 18
+// Here is the stack trace to help identify the error in your code:
+// 	at ArrayList.addToFront, line number: 62 
+
+// [Test Failure: addToBack] [-0.43] : IllegalArgumentException not thrown when attempting to add null data to the back. 
+
+// [Test Failure: addToBack] [-0.43] : Unexpected content after adding once to the back, to capacity.
+// 	Expected : [0a, 1a, 2a, 3a, 4a, 5a, 6a, 7a, 8a]
+// 	Actual : [0a, 1a, 2a, 3a, 4a, 5a, 6a, 7a, null, null, null, null, null, null, null, null, null, null] 
+
+// [Test Failure: addToBack] [-0.43] : This addToBack test was inconclusive due to: java.lang.ArrayIndexOutOfBoundsException: Index 9 out of bounds for length 9
+// Here is the stack trace to help identify the error in your code:
+// 	at ArrayList.addToBack, line number: 113 
+
+// [Test Failure: addToBack] [-0.43] : This addToBack test was inconclusive due to: java.lang.ArrayIndexOutOfBoundsException: Index 18 out of bounds for length 18
+// Here is the stack trace to help identify the error in your code:
+// 	at ArrayList.addToBack, line number: 113 
+
+// [Test Failure: validSize] [-0.43] : Size variable did not update correctly when testing the following method(s): removeFromFront. Size variable could not be validated for the following method(s) due to early test failure(s): addToBack, addToFront. 
+
+
+// Score: 6.09 / 10.0
+// ============================================================
