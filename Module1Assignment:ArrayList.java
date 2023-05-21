@@ -17,6 +17,7 @@ public class ArrayList<T> {
      */
     private T[] backingArray;
     private int size;
+    // private int sizeIterator = 1;
 
     /**
      * This is the constructor that constructs a new ArrayList.
@@ -57,22 +58,29 @@ public class ArrayList<T> {
         //If unessesary then we shift all elements to the right  
         //By looping through 
         if (size != INITIAL_CAPACITY){
-                temp = backingArray[0];
-            for (int i = 0; i < size; i ++) {
-                temp = backingArray[i+1];
-
-                backingArray[i+1] = backingArray[i];
-
+            for (int i = size; i >= 1; i--) {
+                backingArray[i] = backingArray[i-1]
             }
+            backingArray[0] = data;
         }
 
         //Resizing is necessary 
+        //How can we keep track of how many times we have resized? If i cant add any instance variables 
         else {
+        // sizeIterator++
 
+        //Double the inital length of old array
+        newBackingArray = (T[]) new Object[2*INITIAL_CAPACITY];  
+        
+        //Copy all values from old array into new 
+        for (int i = 0; i < size; i ++) { 
+            newBackingArray[i] = backingArray[i];
+          }
         }
-
-
+        //Reassign backingArray to the doubled capacity array
+        backingArray = newBackingArray;
     }
+    
 
     /**
      * Adds the data to the back of the list.
@@ -105,8 +113,20 @@ public class ArrayList<T> {
         //Resizing is necessary 
         //How can we keep track of how many times we have resized? If i cant add any instance variables 
         else {
+        // sizeIterator++
+
+        //Double the inital length of old array
         newBackingArray = (T[]) new Object[2*INITIAL_CAPACITY];  
+        
+        //Copy all values from old array into new 
+        for (int i = 0; i < size; i ++) { 
+            newBackingArray[i] = backingArray[i];
+
+          }
         }
+
+        //Reassign backingArray to the doubled capacity array
+        backingArray = newBackingArray;
 
     }
 
