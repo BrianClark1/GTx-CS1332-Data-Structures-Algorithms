@@ -87,6 +87,7 @@ public class ArrayList<T> {
         
         //Reassign backingArray to the doubled capacity array
         backingArray = newBackingArray;
+        backingArray[size] = data;
         size++;
         
         }
@@ -119,7 +120,7 @@ public class ArrayList<T> {
         //If unessesary then we place new element at the end of the array, after incrementation is size - 1;   
         if (size != INITIAL_CAPACITY){
             
-            backingArray[size-1] = data;
+            backingArray[size] = data;
             size++; 
         }
 
@@ -139,6 +140,7 @@ public class ArrayList<T> {
           }
         //Reassign backingArray to the doubled capacity array
         backingArray = newBackingArray;
+        backingArray[size] = data;
         size++;
         }
 
@@ -180,7 +182,7 @@ public class ArrayList<T> {
             backingArray[i] = backingArray[i+1];
          
          }
-         backingArray[size-1] = null;
+         backingArray[size] = null;
          size--;
          return temp; 
         }
@@ -208,7 +210,7 @@ public class ArrayList<T> {
 
         else{ 
         T temp = backingArray[size-1];
-        backingArray[size-1] = null;
+        backingArray[size] = null;
         size--;
         return temp;
         }
