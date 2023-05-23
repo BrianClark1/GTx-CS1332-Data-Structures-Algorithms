@@ -44,7 +44,12 @@ public class ArrayList<T> {
         // WRITE YOUR CODE HERE (DO NOT MODIFY METHOD HEADER)!
         
         //Data Validity Check 
-        if (data == null) throw new NoSuchElementException("Error: input data is null");
+        if (data == null)  { 
+            throw new IllegalArgumentException("Error: input data is null");
+            return;
+    }
+
+
         
         //Check if empty
         if (size == 0) {
@@ -54,20 +59,22 @@ public class ArrayList<T> {
         }
 
         // Increment size so we can se if resizing is necessary 
-        size++;
         //If unessesary then we shift all elements to the right  
         //By looping through 
         if (size != INITIAL_CAPACITY){
+            size++;
             for (int i = size; i >= 1; i--) {
                 backingArray[i] = backingArray[i-1];
             }
             backingArray[0] = data;
+            
         }
 
         //Resizing is necessary 
         //How can we keep track of how many times we have resized? If i cant add any instance variables 
       
         else {
+        size++;
         // sizeIterator++
 
         //Double the inital length of old array
@@ -97,7 +104,7 @@ public class ArrayList<T> {
         // WRITE YOUR CODE HERE (DO NOT MODIFY METHOD HEADER)!
 
         //Data Validity Check 
-        if (data == null) throw new NoSuchElementException("Error: input data is null");
+        if (data == null) throw new IllegalArgumentException("Error: input data is null");
         
         //Check if empty
         if (size == 0) {
@@ -107,15 +114,17 @@ public class ArrayList<T> {
         }
 
         // Increment size so we can se if resizing is necessary 
-        size++;
+        
         //If unessesary then we place new element at the end of the array, after incrementation is size - 1;   
         if (size != INITIAL_CAPACITY){
+            size++;
             backingArray[size-1] = data; 
         }
 
         //Resizing is necessary 
         //How can we keep track of how many times we have resized? If i cant add any instance variables 
         else {
+            size++;
         // sizeIterator++
 
         //Double the inital length of old array
@@ -169,6 +178,7 @@ public class ArrayList<T> {
          
          }
          backingArray[size-1] = null;
+         size--;
          return temp; 
         }
 
