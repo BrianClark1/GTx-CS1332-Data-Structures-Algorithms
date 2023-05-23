@@ -62,11 +62,11 @@ public class ArrayList<T> {
         //If unessesary then we shift all elements to the right  
         //By looping through 
         if (size != INITIAL_CAPACITY){
-            size++;
             for (int i = size; i >= 1; i--) {
                 backingArray[i] = backingArray[i-1];
             }
             backingArray[0] = data;
+            size++;
             
         }
 
@@ -74,7 +74,7 @@ public class ArrayList<T> {
         //How can we keep track of how many times we have resized? If i cant add any instance variables 
       
         else {
-        size++;
+        
         // sizeIterator++
 
         //Double the inital length of old array
@@ -87,6 +87,7 @@ public class ArrayList<T> {
         
         //Reassign backingArray to the doubled capacity array
         backingArray = newBackingArray;
+        size++;
         
         }
     }
@@ -117,14 +118,15 @@ public class ArrayList<T> {
         
         //If unessesary then we place new element at the end of the array, after incrementation is size - 1;   
         if (size != INITIAL_CAPACITY){
-            size++;
-            backingArray[size-1] = data; 
+            
+            backingArray[size-1] = data;
+            size++; 
         }
 
         //Resizing is necessary 
         //How can we keep track of how many times we have resized? If i cant add any instance variables 
         else {
-            size++;
+            
         // sizeIterator++
 
         //Double the inital length of old array
@@ -137,6 +139,7 @@ public class ArrayList<T> {
           }
         //Reassign backingArray to the doubled capacity array
         backingArray = newBackingArray;
+        size++;
         }
 
 
