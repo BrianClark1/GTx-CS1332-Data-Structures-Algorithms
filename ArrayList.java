@@ -59,7 +59,7 @@ public class ArrayList<T> {
         //If unessesary then we shift all elements to the right  
         //By looping through 
         if (size != backingArray.length){
-            for (int i = size-1; i >= 1; i--) {
+            for (int i = size-1; i >= 0; i--) {
                 backingArray[i+1] = backingArray[i];
             }
             backingArray[0] = data;
