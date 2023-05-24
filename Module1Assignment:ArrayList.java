@@ -46,7 +46,6 @@ public class ArrayList<T> {
         //Data Validity Check 
         if (data == null)  { 
             throw new IllegalArgumentException("Error: input data is null");
-            return;
     }
 
 
@@ -87,7 +86,7 @@ public class ArrayList<T> {
         
         //Reassign backingArray to the doubled capacity array
         backingArray = newBackingArray;
-        backingArray[size] = data;
+        backingArray[0] = data;
         size++;
         
         }
@@ -182,7 +181,7 @@ public class ArrayList<T> {
             backingArray[i] = backingArray[i+1];
          
          }
-         backingArray[size] = null;
+         backingArray[size-1] = null;
          size--;
          return temp; 
         }
@@ -210,7 +209,7 @@ public class ArrayList<T> {
 
         else{ 
         T temp = backingArray[size-1];
-        backingArray[size] = null;
+        backingArray[size-1] = null;
         size--;
         return temp;
         }
@@ -282,4 +281,120 @@ public class ArrayList<T> {
 
 
 // Score: 6.09 / 10.0
+// ============================================================
+
+
+// [Executed at: Sun May 21 13:17:39 PDT 2023]
+
+// ============================================================
+// ArrayList.java successfully compiled.
+// ============================================================
+// Tests Passed: 14 / 23
+
+// // [Test Failure: addToFront] [-0.43] : IllegalArgumentException not thrown when attempting to add null data to the front. 
+
+// [Test Failure: addToFront] [-0.43] : Unexpected content after adding once to the front, to capacity.
+// 	Expected : [0a, 1a, 2a, 3a, 4a, 5a, 6a, 7a, 8a]
+// 	Actual : [1a, 2a, 3a, 4a, 5a, 6a, 7a, 8a, null, null, null, null, null, null, null, null, null, null] 
+
+// [Test Failure: addToFront] [-0.43] : This addToFront test was inconclusive due to: java.lang.ArrayIndexOutOfBoundsException: Index 9 out of bounds for length 9
+// Here is the stack trace to help identify the error in your code:
+// 	at ArrayList.addToFront, line number: 62 
+
+// [Test Failure: addToFront] [-0.43] : This addToFront test was inconclusive due to: java.lang.ArrayIndexOutOfBoundsException: Index 18 out of bounds for length 18
+// Here is the stack trace to help identify the error in your code:
+// 	at ArrayList.addToFront, line number: 62 
+
+// // [Test Failure: addToBack] [-0.43] : IllegalArgumentException not thrown when attempting to add null data to the back. 
+
+// [Test Failure: addToBack] [-0.43] : Unexpected content after adding once to the back, to capacity.
+// 	Expected : [0a, 1a, 2a, 3a, 4a, 5a, 6a, 7a, 8a]
+// 	Actual : [0a, 1a, 2a, 3a, 4a, 5a, 6a, 7a, null, null, null, null, null, null, null, null, null, null] 
+
+// [Test Failure: addToBack] [-0.43] : This addToBack test was inconclusive due to: java.lang.ArrayIndexOutOfBoundsException: Index 9 out of bounds for length 9
+// Here is the stack trace to help identify the error in your code:
+// 	at ArrayList.addToBack, line number: 113 
+
+// [Test Failure: addToBack] [-0.43] : This addToBack test was inconclusive due to: java.lang.ArrayIndexOutOfBoundsException: Index 18 out of bounds for length 18
+// Here is the stack trace to help identify the error in your code:
+// 	at ArrayList.addToBack, line number: 113 
+
+// [Test Failure: validSize] [-0.43] : Size variable did not update correctly when testing the following method(s): removeFromFront. Size variable could not be validated for the following method(s) due to early test failure(s): addToBack, addToFront. 
+
+
+// Score: 6.09 / 10.0
+// ============================================================
+
+
+
+
+// [Executed at: Mon May 22 17:04:42 PDT 2023]
+
+// ============================================================
+// ArrayList.java successfully compiled.
+// ============================================================
+// Tests Passed: 17 / 23
+
+// [Test Failure: addToFront] [-0.43] : This addToFront test was inconclusive due to: java.lang.ArrayIndexOutOfBoundsException: Index 9 out of bounds for length 9
+// Here is the stack trace to help identify the error in your code:
+// 	at ArrayList.addToFront, line number: 66 
+
+// [Test Failure: addToFront] [-0.43] : This addToFront test was inconclusive due to: java.lang.ArrayIndexOutOfBoundsException: Index 9 out of bounds for length 9
+// Here is the stack trace to help identify the error in your code:
+// 	at ArrayList.addToFront, line number: 84 
+
+// [Test Failure: addToFront] [-0.43] : This addToFront test was inconclusive due to: java.lang.ArrayIndexOutOfBoundsException: Index 18 out of bounds for length 18
+// Here is the stack trace to help identify the error in your code:
+// 	at ArrayList.addToFront, line number: 66 
+
+// [Test Failure: addToBack] [-0.43] : This addToBack test was inconclusive due to: java.lang.ArrayIndexOutOfBoundsException: Index 9 out of bounds for length 9
+// Here is the stack trace to help identify the error in your code:
+// 	at ArrayList.addToBack, line number: 134 
+
+// [Test Failure: addToBack] [-0.43] : This addToBack test was inconclusive due to: java.lang.ArrayIndexOutOfBoundsException: Index 18 out of bounds for length 18
+// Here is the stack trace to help identify the error in your code:
+// 	at ArrayList.addToBack, line number: 120 
+
+// [Test Failure: validSize] [-0.43] : Size variable could not be validated for the following method(s) due to early test failure(s): addToBack, addToFront. 
+
+
+// Score: 7.39 / 10.0
+// ============================================================
+
+
+// [Executed at: Mon May 22 18:54:51 PDT 2023]
+
+// ============================================================
+// ArrayList.java successfully compiled.
+// ============================================================
+// Tests Passed: 16 / 23
+
+// [Test Failure: addToFront] [-0.43] : Unexpected content after adding once to the front, triggering first resize.
+// 	Expected : [0a, 1a, 2a, 3a, 4a, 5a, 6a, 7a, 8a, 9a, null, null, null, null, null, null, null, null]
+// 	Actual : [1a, 2a, 3a, 4a, 5a, 6a, 7a, 8a, 9a, null, null, null, null, null, null, null, null, null] 
+
+// [Test Failure: addToFront] [-0.43] : This addToFront test was inconclusive due to: java.lang.ArrayIndexOutOfBoundsException: Index 18 out of bounds for length 18
+// Here is the stack trace to help identify the error in your code:
+// 	at ArrayList.addToFront, line number: 65 
+
+// [Test Failure: addToBack] [-0.43] : Unexpected content after adding once to the back.
+// 	Expected : [0a, 1a, 2a, 3a, 4a, null, null, null, null]
+// 	Actual : [0a, 1a, 2a, 4a, null, null, null, null, null] 
+
+// [Test Failure: addToBack] [-0.43] : Unexpected content after adding once to the back, to capacity.
+// 	Expected : [0a, 1a, 2a, 3a, 4a, 5a, 6a, 7a, 8a]
+// 	Actual : [0a, 1a, 2a, 3a, 4a, 5a, 6a, 8a, null] 
+
+// [Test Failure: addToBack] [-0.43] : Unexpected content after adding once to the back, triggering first resize.
+// 	Expected : [0a, 1a, 2a, 3a, 4a, 5a, 6a, 7a, 8a, 9a, null, null, null, null, null, null, null, null]
+// 	Actual : [0a, 1a, 2a, 3a, 4a, 5a, 6a, 7a, 8a, null, null, null, null, null, null, null, null, null] 
+
+// [Test Failure: addToBack] [-0.43] : Unexpected content after adding once to the back, triggering second resize.
+// 	Expected : [0a, 1a, 2a, 3a, 4a, 5a, 6a, 7a, 8a, 9a, 10a, 11a, 12a, 13a, 14a, 15a, 16a, 17a, 18a, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]
+// 	Actual : [0a, 1a, 2a, 3a, 4a, 5a, 6a, 7a, 8a, 9a, 10a, 11a, 12a, 13a, 14a, 15a, 16a, 18a] 
+
+// [Test Failure: validSize] [-0.43] : Size variable could not be validated for the following method(s) due to early test failure(s): addToFront. 
+
+
+// Score: 6.96 / 10.0
 // ============================================================
