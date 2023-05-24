@@ -42,14 +42,12 @@ public class ArrayList<T> {
      */
     public void addToFront(T data) {
         // WRITE YOUR CODE HERE (DO NOT MODIFY METHOD HEADER)!
-        
+
         //Data Validity Check 
         if (data == null)  { 
             throw new IllegalArgumentException("Error: input data is null");
     }
 
-
-        
         //Check if empty
         if (size == 0) {
             backingArray[0] = data;
@@ -60,38 +58,38 @@ public class ArrayList<T> {
         // Increment size so we can se if resizing is necessary 
         //If unessesary then we shift all elements to the right  
         //By looping through 
-        if (size != INITIAL_CAPACITY){
-            for (int i = size; i >= 1; i--) {
-                backingArray[i] = backingArray[i-1];
+        if (size != backingArray.length){
+            for (int i = size-1; i >= 1; i--) {
+                backingArray[i+1] = backingArray[i];
             }
             backingArray[0] = data;
             size++;
-            
+
         }
 
         //Resizing is necessary 
         //How can we keep track of how many times we have resized? If i cant add any instance variables 
-      
+
         else {
-        
+
         // sizeIterator++
 
         //Double the inital length of old array
-        T[] newBackingArray = (T[]) new Object[2*INITIAL_CAPACITY];  
-        
+        T[] newBackingArray = (T[]) new Object[2 * backingArray.length];  
+        //T[] newBackingArray = (T[]) new Object[2*INITIAL_CAPACITY];
+
         //Copy all values from old array into new 
         for (int i = 0; i < size; i ++) { 
-            newBackingArray[i] = backingArray[i];
+            newBackingArray[i+1] = backingArray[i];
           }
-        
+
         //Reassign backingArray to the doubled capacity array
         backingArray = newBackingArray;
         backingArray[0] = data;
         size++;
-        
+
         }
     }
-    
 
     /**
      * Adds the data to the back of the list.
@@ -105,8 +103,9 @@ public class ArrayList<T> {
         // WRITE YOUR CODE HERE (DO NOT MODIFY METHOD HEADER)!
 
         //Data Validity Check 
-        if (data == null) throw new IllegalArgumentException("Error: input data is null");
-        
+        if (data == null)
+            throw new IllegalArgumentException("Error: input data is null");
+
         //Check if empty
         if (size == 0) {
             backingArray[0] = data;
@@ -115,35 +114,33 @@ public class ArrayList<T> {
         }
 
         // Increment size so we can se if resizing is necessary 
-        
+
         //If unessesary then we place new element at the end of the array, after incrementation is size - 1;   
-        if (size != INITIAL_CAPACITY){
-            
+        if (size != backingArray.length) {
+
             backingArray[size] = data;
-            size++; 
+            size++;
         }
 
         //Resizing is necessary 
         //How can we keep track of how many times we have resized? If i cant add any instance variables 
         else {
-            
-        // sizeIterator++
 
-        //Double the inital length of old array
-         T[] newBackingArray = (T[]) new Object[2*INITIAL_CAPACITY];  
-        
-        //Copy all values from old array into new 
-        for (int i = 0; i < size; i ++) { 
-            newBackingArray[i] = backingArray[i];
+            // sizeIterator++
 
-          }
-        //Reassign backingArray to the doubled capacity array
-        backingArray = newBackingArray;
-        backingArray[size] = data;
-        size++;
+            //Double the inital length of old array
+            T[] newBackingArray = (T[]) new Object[2 * backingArray.length];
+
+            //Copy all values from old array into new 
+            for (int i = 0; i < size; i++) {
+                newBackingArray[i] = backingArray[i];
+
+            }
+            //Reassign backingArray to the doubled capacity array
+            backingArray = newBackingArray;
+            backingArray[size] = data;
+            size++;
         }
-
-
 
     }
 
@@ -161,31 +158,30 @@ public class ArrayList<T> {
      */
     public T removeFromFront() {
         // WRITE YOUR CODE HERE (DO NOT MODIFY METHOD HEADER)!
-        
+
         //Check if empty
         if (size == 0) {
-        throw new NoSuchElementException("Error: list is empty");
+            throw new NoSuchElementException("Error: list is empty");
         }
 
         //Check if size is 1 
         else if (size == 1) {
-        T temp = backingArray[0];
-        backingArray[0] = null;
-        size--;
-        return temp;
-        }
-
-        else  { 
             T temp = backingArray[0];
-        for (int i = 0; i < size-1; i++) {
-            backingArray[i] = backingArray[i+1];
-         
-         }
-         backingArray[size-1] = null;
-         size--;
-         return temp; 
+            backingArray[0] = null;
+            size--;
+            return temp;
         }
 
+        else {
+            T temp = backingArray[0];
+            for (int i = 0; i < size - 1; i++) {
+                backingArray[i] = backingArray[i + 1];
+
+            }
+            backingArray[size - 1] = null;
+            size--;
+            return temp;
+        }
 
     }
 
@@ -204,14 +200,14 @@ public class ArrayList<T> {
 
         //Check if empty
         if (size == 0) {
-        throw new NoSuchElementException("Error: list is empty");
+            throw new NoSuchElementException("Error: list is empty");
         }
 
-        else{ 
-        T temp = backingArray[size-1];
-        backingArray[size-1] = null;
-        size--;
-        return temp;
+        else {
+            T temp = backingArray[size - 1];
+            backingArray[size - 1] = null;
+            size--;
+            return temp;
         }
     }
 
@@ -241,6 +237,54 @@ public class ArrayList<T> {
         return size;
     }
 }
+
+// public class ArrayListTest {
+//     public static void main(String[] args) {
+//         ArrayList<Integer> list = new ArrayList<>();
+
+//         // Test addToFront
+//         System.out.println("Testing addToFront:");
+//         list.addToFront(3);
+//         list.addToFront(2);
+//         list.addToFront(1);
+//         System.out.println(Arrays.toString(list.getBackingArray())); // [1, 2, 3, null, null, null, null, null, null]
+//         System.out.println("Size: " + list.size()); // 3
+
+//         // Test addToBack
+//         System.out.println("\nTesting addToBack:");
+//         list.addToBack(4);
+//         list.addToBack(5);
+//         list.addToBack(6);
+//         list.addToBack(7);
+//         System.out.println(Arrays.toString(list.getBackingArray())); // [1, 2, 3, 4, 5, 6, 7, null, null]
+//         System.out.println("Size: " + list.size()); // 7
+
+//         // Test removeFromFront
+//         System.out.println("\nTesting removeFromFront:");
+//         System.out.println("Removed: " + list.removeFromFront()); // Removed: 1
+//         System.out.println(Arrays.toString(list.getBackingArray())); // [2, 3, 4, 5, 6, 7, null, null, null]
+//         System.out.println("Size: " + list.size()); // 6
+
+//         // Test removeFromBack
+//         System.out.println("\nTesting removeFromBack:");
+//         System.out.println("Removed: " + list.removeFromBack()); // Removed: 7
+//         System.out.println(Arrays.toString(list.getBackingArray())); // [2, 3, 4, 5, 6, null, null, null, null]
+//         System.out.println("Size: " + list.size()); // 5
+
+//         // Additional tests
+//         System.out.println("\nAdditional tests:");
+//         list.addToFront(0);
+//         list.addToBack(8);
+//         list.addToFront(-1);
+//         System.out.println(Arrays.toString(list.getBackingArray())); // [-1, 0, 2, 3, 4, 5, 6, 8, null]
+//         System.out.println("Size: " + list.size()); // 8
+
+//         list.removeFromFront();
+//         list.removeFromBack();
+//         System.out.println(Arrays.toString(list.getBackingArray())); // [0, 2, 3, 4, 5, 6, null, null, null]
+//         System.out.println("Size: " + list.size()); // 6
+//     }
+// }
 
 // [Executed at: Sun May 21 13:17:39 PDT 2023]
 
