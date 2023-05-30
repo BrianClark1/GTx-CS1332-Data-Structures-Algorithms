@@ -1,0 +1,19 @@
+Circular Singly-Linked List that has a head reference and size variable
+
+A.) Adding to Front. The head is set to newNode. newNode.next is set to newNode. No difference between 3 add methods. 
+B.)To add to the back in a singly Ciruclar linked list. We placed the newNode after the head with no data. head.next = newNode.next. head.next = newNode, head.value = newNode.value. Then we place the newData = head.value. head = newNode.+65
+C.)To add 0 to the front of our CSLL, we place a newNode at index 1 with empty value. this is done by newNode.next = head.Next, head.value = newNode.value, head.next = newNode. head.value = newData
+D.) To add to index four we must locate index 3. we place newNode.next = prevNode.next, prevNode.next= newNode. 
+E.)To remove from the front of our CSLL. we have head.value = head.next.value. head.next = head.next.next. This will remove the node after the head, but we copied its value over , keeping list integrity. 
+F.)to remove from the middle of our CSLL. We must get the prevNode of our index of interest. Then we set out prevNode.next = prevNode.next.next. Leaving our skipped over node to be garbage collected 
+G.) set head = null. This will remove any data for garbage collection 
+
+Circular Doubly-Linked List that has a head reference and size variable.
+
+A.)
+B.)
+C.)
+D.)
+E.)
+F.)
+G.)
