@@ -23,9 +23,30 @@ public class SinglyLinkedList<T> {
      *
      * @param data the data to add to the front of the list
      * @throws java.lang.IllegalArgumentException if data is null
+     *  Singly-Linked List with a head and tail reference
      */
     public void addToFront(T data) {
         // WRITE YOUR CODE HERE (DO NOT MODIFY METHOD HEADER)!
+        
+        // Data Validity Check
+        if (data == null) {
+            throw new IllegalArgumentException("Error: input data is null");
+        }
+        
+        //Check for Empty List
+        SinglyLinkedListNode<T> newNode = new SinglyLinkedListNode<>(data);
+        if (size == 0) {
+            head = newNode;
+            tail = newNode;
+            size++;
+        }
+
+        //Create our new head
+        else {
+            newNode.setNext(head);
+            head = newNode;
+            size++;
+        }
     }
 
     /**
@@ -35,9 +56,31 @@ public class SinglyLinkedList<T> {
      *
      * @param data the data to add to the back of the list
      * @throws java.lang.IllegalArgumentException if data is null
+     * Singly-Linked List with a head and tail reference
      */
     public void addToBack(T data) {
         // WRITE YOUR CODE HERE (DO NOT MODIFY METHOD HEADER)!
+        
+        // Data Validity Check
+        if (data == null) {
+            throw new IllegalArgumentException("Error: input data is null");
+        }
+
+        // Check for Empty List
+        SinglyLinkedListNode<T> newNode = new SinglyLinkedListNode<>(data);
+        if (size == 0) {
+            head = newNode;
+            tail = newNode;
+            size++;
+        }
+
+        // Create our new tail
+        else {
+            newNode.setNext(null);
+            tail.setNext(newNode);
+            tail = newNode;
+            size++;
+        }
     }
 
     /**
@@ -47,9 +90,25 @@ public class SinglyLinkedList<T> {
      *
      * @return the data formerly located at the front of the list
      * @throws java.util.NoSuchElementException if the list is empty
+     * Singly-Linked List with a head and tail reference
      */
     public T removeFromFront() {
         // WRITE YOUR CODE HERE (DO NOT MODIFY METHOD HEADER)!
+
+        // Check for Empty List
+        if (size == 1) {
+            head = null;
+            tail = null;
+            size--;
+        }
+
+        else {
+            SinglyLinkedListNode<T> prevHead = head;
+            head = head.getNext();
+            prevHead.setNext(null);
+            size--;
+            return (T) prevHead;
+        }
     }
 
     /**
@@ -62,6 +121,19 @@ public class SinglyLinkedList<T> {
      */
     public T removeFromBack() {
         // WRITE YOUR CODE HERE (DO NOT MODIFY METHOD HEADER)!
+        // Check for Empty List
+        if (size == 1) {
+            head = null;
+            tail = null;
+            size--;
+        }
+        else {
+            SinglyLinkedListNode<T> prevTail = tail;
+            head = head.getNext();
+            prevHead.setNext(null);
+            size--;
+            return (T) prevHead;
+        }
     }
 
     /**

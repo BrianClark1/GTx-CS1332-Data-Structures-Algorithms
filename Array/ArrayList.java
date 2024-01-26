@@ -46,7 +46,7 @@ public class ArrayList<T> {
         //Data Validity Check 
         if (data == null)  { 
             throw new IllegalArgumentException("Error: input data is null");
-    }
+        }
 
         //Check if empty
         if (size == 0) {
